@@ -1,0 +1,15 @@
+{
+  "name": "nakatomo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "なかとも：子どもの見守り（デモ版）。タグとローカル回線で、信頼できる人の輪が見守る",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test test/"
+  }
+}

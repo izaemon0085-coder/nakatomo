@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>なかとも デモ版</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top-bar">
+    <div class="inner">
+      <span class="brand">なかとも <span class="beta">デモ版</span></span>
+      <nav class="roles" aria-label="だれとして見る">
+        <button type="button" data-role="parent" aria-pressed="true">保護者</button>
+        <button type="button" data-role="family" aria-pressed="false">家族</button>
+        <button type="button" data-role="teacher" aria-pressed="false">先生</button>
+        <button type="button" data-role="friend" aria-pressed="false">友達の家族</button>
+        <button type="button" data-role="child" aria-pressed="false">子ども</button>
+        <button type="button" data-role="join" aria-pressed="false">輪に入る</button>
+      </nav>
+    </div>
+  </header>
+  <p class="demo-note">デモ版です。にせのタグとノードで動いています。ログインはなく、上のボタンで「だれとして見るか」を切りかえます。実際の子どもには使いません。</p>
+
+  <div class="layout">
+    <main class="main" id="main" aria-live="polite"></main>
+
+    <!-- デモで見せる人が使う：にせのタグを動かす -->
+    <aside class="sim card" aria-labelledby="sim-title">
+      <h2 id="sim-title">🎮 シミュレーター</h2>
+      <p class="clock"><span id="sim-date"></span> <strong id="sim-time"></strong></p>
+      <ol class="road" id="road" aria-label="ノードの並び"></ol>
+      <div class="sim-group">
+        <p class="sim-label">歩く</p>
+        <button type="button" class="btn" data-sim="walk" data-route="school">通学路を歩く</button>
+        <button type="button" class="btn" data-sim="walk" data-route="grandma">学校→おばあちゃんの家</button>
+        <button type="button" class="btn ghost" data-sim="walk" data-route="detour">寄り道する（公園前を通らない）</button>
+      </div>
+      <div class="sim-group">
+        <p class="sim-label">こまったこと</p>
+        <button type="button" class="btn warn" data-sim="danger">線路わきに近づく</button>
+        <button type="button" class="btn warn" data-sim="vanish">15分見えなくなる</button>
+        <button type="button" class="btn ghost" data-sim="breakNode" data-node="park">公園前のノードがこわれる</button>
+        <button type="button" class="btn ghost" data-sim="fixNode" data-node="park">ノードを直す</button>
+      </div>
+      <div class="sim-group">
+        <p class="sim-label">タグのボタン</p>
+        <button type="button" class="btn danger" data-sim="sos">SOS を押す</button>
+        <button type="button" class="btn ghost" data-sim="ok">だいじょうぶ</button>
+        <button type="button" class="btn ghost" data-sim="later">遅くなる（2回押し）</button>
+      </div>
+      <div class="sim-group">
+        <p class="sim-label">時計</p>
+        <button type="button" class="btn ghost" data-sim="advance" data-minutes="5">＋5分</button>
+        <button type="button" class="btn ghost" data-sim="advance" data-minutes="30">＋30分</button>
+        <form class="row" id="time-form">
+          <label class="sr-only" for="time-input">この時刻まで進める</label>
+          <input class="input" id="time-input" type="time" value="14:00">
+          <button class="btn ghost" type="submit">まで進める</button>
+        </form>
+        <button type="button" class="btn ghost" data-sim="reset">はじめから</button>
+      </div>
+      <p class="error" id="sim-error" role="alert"></p>
+    </aside>
+  </div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
